@@ -6,7 +6,6 @@
             [app.routing :as routing]
             [app.view :as view]))
 
-
 (rf/reg-event-fx
   ::load-about-page
   (constantly nil))
@@ -43,13 +42,11 @@
   (rf/clear-subscription-cache!)
   (kf/start! {:debug?         true
               :routes         routing/routes
-              :hash-routing?  true
+              :hash-routing?  false
               :initial-db     {}
               :root-component [view/root-component]}))
 
-(defn init! []
-  (ajax/load-interceptors!)
-  (mount-components))
+(defonce _ (ajax/load-interceptors!))
 
-(defn reload! []
-  (println "reload!"))
+(defn ^:export main []
+  (mount-components))

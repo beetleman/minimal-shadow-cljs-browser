@@ -23,6 +23,7 @@
        :rel  "stylesheet"}]
 
      [:script {:src (str "js/" (-> manifest first :output-name))}]
+     [:script "app.core.main();"]
      [:link {:href "/css/screen.css" :rel "stylesheet"}]]]))
 
 

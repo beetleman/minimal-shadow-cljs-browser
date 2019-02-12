@@ -13,12 +13,12 @@
                 :output-dir  "public/js"
                 :asset-path  "/js"
                 :build-hooks [(app.build-hook/hook {:index-html-path "public/index.html"})]
-                :modules     {:main {:init-fn app.core/init!}}
+                :modules     {:main {:entries [app.core]}}
 
                 :release {:module-hash-names true
                           :build-hooks       [(app.build-hook/hook {:index-html-path "build/index.html"})]
                           :output-dir        "build/js"}
 
-                :devtools {:after-load app.core/reload!
+                :devtools {:after-load app.core/main
                            :http-root  "public"
                            :http-port  8080}}}}
