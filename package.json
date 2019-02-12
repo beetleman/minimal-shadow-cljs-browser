@@ -2,17 +2,13 @@
   "name": "minimal-shadow-cljs-browser",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "watch": "shadow-cljs watch app",
-    "compile": "shadow-cljs compile app",
-    "release": "shadow-cljs release app",
-    "html": "mkdir -p target && cp assets/index.html target/",
-    "serve": "yarn html && http-server target/",
-    "del": "rm -r public/js/*",
-    "build": "yarn release && yarn html && yarn serve"
+    "watch": "yarn clean && shadow-cljs watch app",
+    "build": "yarn clean && shadow-cljs release app && cp -r public/* build/",
+    "clean": "rm -rf public/js build",
+    "serve-build": "yarn build &&  http-server ./build"
   },
-  "author": "",
+  "author": "Mateusz Probachta",
   "license": "MIT",
   "devDependencies": {
     "http-server": "^0.11.1",

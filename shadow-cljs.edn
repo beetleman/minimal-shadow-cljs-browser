@@ -6,14 +6,19 @@
                 [kee-frame "0.3.2"]
                 [cljs-ajax "0.8.0"]
                 [markdown-clj "1.0.7"]
+                [hiccup "1.0.5"]
                 [baking-soda "0.2.0" :exclusions [cljsjs/react-bootstrap]]]
 
- :builds {:app {
-                :target :browser
-                :output-dir "public/js"
-                :asset-path "/js"
-                :modules {:main {:init-fn app.core/init!}}
+ :builds {:app {:target      :browser
+                :output-dir  "public/js"
+                :asset-path  "/js"
+                :build-hooks [(app.build-hook/hook {:index-html-path "public/index.html"})]
+                :modules     {:main {:init-fn app.core/init!}}
+
+                :release {:module-hash-names true
+                          :build-hooks       [(app.build-hook/hook {:index-html-path "build/index.html"})]
+                          :output-dir        "build/js"}
 
                 :devtools {:after-load app.core/reload!
-                           :http-root "public"
-                           :http-port 8080}}}}
+                           :http-root  "public"
+                           :http-port  8080}}}}
