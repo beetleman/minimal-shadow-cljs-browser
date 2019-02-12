@@ -1,10 +1,19 @@
-
 {:source-paths ["src"]
- :dependencies []
- :builds {:app {:output-dir "target/"
-                :asset-path "."
+ :dependencies [[re-frame "0.10.6"]
+                [reagent "0.8.1"]
+                [day8.re-frame/http-fx "0.1.6"]
+                [funcool/struct "1.3.0"]
+                [kee-frame "0.3.2"]
+                [cljs-ajax "0.8.0"]
+                [markdown-clj "1.0.7"]
+                [baking-soda "0.2.0" :exclusions [cljsjs/react-bootstrap]]]
+
+ :builds {:app {
                 :target :browser
-                :modules {:main {:init-fn app.main/main!}}
-                :devtools {:after-load app.main/reload!
-                           :http-root "target"
+                :output-dir "public/js"
+                :asset-path "/js"
+                :modules {:main {:init-fn app.core/init!}}
+
+                :devtools {:after-load app.core/reload!
+                           :http-root "public"
                            :http-port 8080}}}}
