@@ -1,4 +1,4 @@
-{:source-paths ["src"]
+{:source-paths ["src" "test"]
  :dependencies [[re-frame "0.10.6"]
                 [reagent "0.8.1"]
                 [day8.re-frame/http-fx "0.1.6"]
@@ -21,4 +21,10 @@
 
                 :devtools {:after-load app.core/main
                            :http-root  "public"
-                           :http-port  8080}}}}
+                           :http-port  8080}}
+
+          :test {:target    :browser-test
+                 :test-dir  ".test"
+                 :ns-regexp "-test$"
+                 :devtools  {:http-port 8021
+                             :http-root ".test"}}}}

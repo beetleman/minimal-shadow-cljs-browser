@@ -1,8 +1,10 @@
 /public/js
-/public/js/index.html
+/public/index.html
+
 /build/
 /node_modules
 /*.log
 .shadow-cljs/
+/.test
 
 .nrepl-port
